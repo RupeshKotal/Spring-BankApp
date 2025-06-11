@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Transfer Money</h2>
+<mat-dialog-content>
+  <form [formGroup]="transferForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>To Account Number</mat-label>
+      <input matInput formControlName="toAccountNumber" placeholder="Enter recipient account number">
+      <mat-error *ngIf="transferForm.get('toAccountNumber')?.hasError('required')">Account number is required</mat-error>
+      <mat-error *ngIf="transferForm.get('toAccountNumber')?.hasError('pattern')">Please enter a valid 10-digit account number</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Amount</mat-label>
+      <input matInput formControlName="amount" type="number" placeholder="Enter amount">
+      <mat-error *ngIf="transferForm.get('amount')?.hasError('required')">Amount is required</mat-error>
+      <mat-error *ngIf="transferForm.get('amount')?.hasError('min')">Amount must be greater than 0</mat-error>
+      <mat-error *ngIf="transferForm.get('amount')?.hasError('max')">Amount exceeds available balance</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="transferForm.invalid || loading">
+    {{ loading ? 'Processing...' : 'Transfer' }}
+  </button>
+</mat-dialog-actions> 
