@@ -7,6 +7,7 @@
         <artifactId>banking-app</artifactId>
         <groupId>com.bankapp</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>notification-service</artifactId>
     <dependencies>
