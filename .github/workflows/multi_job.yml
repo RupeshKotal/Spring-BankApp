@@ -13,4 +13,11 @@ jobs:
     steps:
       - name: Test Step
         run: echo "This is test step"
+
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: test
+    steps:
+      - name: Deploy Job
+        run: echo "Deployin applocation"
         
