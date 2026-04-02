@@ -1,5 +1,15 @@
 name: Multi-Job-Workflow
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+    - opened
+    branches:
+      - main
+  
 jobs:
   build:
     runs-on: ubuntu-latest
