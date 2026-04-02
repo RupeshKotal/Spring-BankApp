@@ -47,4 +47,16 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/api-gateway:latest
 
+
+      - name: Set Kubeconfig
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBE_CONFIG }}" > $HOME/.kube/config
+
+      - name: Deploy to kubernetes 
+        run: |
+             kubectl apply -f k8s/deployment.yaml
+             kubectl apply -f k8s/service.yaml
+          
+
           
