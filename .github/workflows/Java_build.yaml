@@ -13,8 +13,19 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Cache dependency
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: maven-cache
 
       - name: Build Api gateway
         run: |
           cd api-gateway
-          mvn clean install
+          mvn clean install -DskipTests
+
+      - name: Upload adtrifact
+        uses: actions/upload-artifact@v4
+        with:
+           name: api-jar
+           path: api-gateway/target/*.jar
