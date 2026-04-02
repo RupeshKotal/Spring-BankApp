@@ -1,5 +1,8 @@
 name: Java Build
-on: workflow_dispatch
+on: 
+  push:
+    branches:
+      - main
 jobs:
   Build:
     runs-on: ubuntu-22.04
