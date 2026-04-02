@@ -1,0 +1,15 @@
+name: Multi-Job-Workflow
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build step
+        run: echo "This is build step"
+
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Test Step
+        run: echo "This is test step"
+        
