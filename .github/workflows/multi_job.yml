@@ -9,6 +9,7 @@ jobs:
 
   test:
     runs-on: ubuntu-22.04
+    needs: build
     steps:
       - name: Test Step
         run: echo "This is test step"
